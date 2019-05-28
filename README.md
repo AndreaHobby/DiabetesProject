@@ -1,7 +1,7 @@
 # DiabetesProject
 
 Objective
-This is a project to analyze hospital readmissionn rates. 
+This is a project to analyze hospital readmission rates. 
 
 ### Step 1 Obtaining the data
 
