@@ -11,19 +11,21 @@ Once the individual dataset was downloaded, I checked the variable types in **SA
  I checked for invalid character values and missing data. Then, I looked for out of range data. 
  I checked for invalid numeric values and missing data. I checked to see if any data types need to be converted. Last, I checked the range for variables. I looked for duplicates and values that are repeating. I checked that dates are correctly formatted. Relabel variables as needed. I dropped any unimportant variables. 
 
-Creatd groups and new variables
+Created groups and new variables
 
-#### Learned my data. 
+### Step 3 Modeling 
+
 Since this is healthcare utilization data, I wanted to learn the spread of the variables of interest that will be used in the model. 
 I have created histogram that .... 
 
 Also, I ran descriptive statistics for my variables of interest.
 Mean/Medium/Mode and n for variables of interest 
 
+Significance tests were used to identify the associations between each variable and the outcome. For categorical variables, the chi square test was used or Fisher exact test where appropriate. For continuous variables, the Mann-Whitney U test was employed. 
 
-### Step 3 Modeling 
+The Kaplan-Meier life table method was used to estimate the risk of readmission. The log-rank test was used to compare survival curves.
 
-Source:
+### Source:
 
 The data are submitted on behalf of the Center for Clinical and Translational Research, Virginia Commonwealth University, a recipient of
 NIH CTSA grant UL1 TR00058 and a recipient of the CERNER data. John Clore (jclore '@' vcu.edu), Krzysztof J. Cios (kcios '@' vcu.edu), 
