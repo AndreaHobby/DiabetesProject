@@ -1,4 +1,4 @@
-# DiabetesProject
+# Diabetes Hospital Readmission Project
 
 Objective
 This is a project to analyze hospital readmission rates. 
