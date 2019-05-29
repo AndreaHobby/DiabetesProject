@@ -15,7 +15,7 @@ The, I created groups and new variables to prepare for data modeling.
 
 ### Step 3 Modeling 
 
-The continuous variables used for time in hospital, # of lab procedures, # of procedures, # of medications, # of outpatient visits, # of emergency visits, # of admissions, and # of diahnoses. 
+The continuous variables used for time in hospital, # of lab procedures, # of procedures, # of medications, # of outpatient visits, # of emergency visits, # of admissions, and # of diagnoses. 
 
 The categorical variables used were age, race, gender, readmission and medication change.
 
