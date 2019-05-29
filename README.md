@@ -5,7 +5,9 @@ This is a project to analyze hospital readmission rates.
 
 ### Step 1 Obtaining the data
 
-Once the individual dataset was downloaded, I checked the variable types in **SAS 9.4**.
+Once the individual dataset was downloaded, I used excel to remove variables that would not be used. 
+Payer code and weight were variables of interest but were moved due to a high level of missing data. 
+Then, I checked the variable types in **SAS 9.4**.
  
 ### Step 2 Data Cleaning and Manipulation 
  I checked for invalid character values and missing data. Then, I looked for out of range data. 
@@ -15,9 +17,9 @@ Then, I created groups and new variables to prepare for data modeling.
 
 ### Step 3 Modeling 
 
-The continuous variables used for time in hospital, # of lab procedures, # of procedures, # of medications, # of outpatient visits, # of emergency visits, # of admissions, and # of diagnoses. 
+The continuous variables used for time in hospital, # of lab procedures, # of procedures, # of medications, # of outpatient visits, # of emergency visits, # of admissions, # of inpatient visits, and # of diagnoses. 
 
-The categorical variables used were age, race, gender, readmission and medication change.
+The categorical variables used were age, race, gender, readmission, payer code, disbetes medication and medication change.
 
 Since this is healthcare utilization data, I wanted to learn the spread of the variables of interest that will be used in the model. 
 I have created histogram that showed the skewness of the variables of interest. 
