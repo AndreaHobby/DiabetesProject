@@ -9,7 +9,7 @@ Once the individual dataset was downloaded, I checked the variable types in **SA
  
 ### Step 2 Data Cleaning and Manipulation 
  I checked for invalid character values and missing data. Then, I looked for out of range data. 
- I checked for invalid numeric values and missing data. I checked to see if any data types need to be converted. Last, I checked the range for variables. I looked for duplicates and values that are repeating. I checked that dates are correctly formatted. Relabel variables as needed. I dropped any unimportant variables. 
+ I checked for invalid numeric values and missing data. I checked to see if any data types need to be converted. Last, I checked the range for variables. I looked for duplicates and values that are repeating. I checked that dates are correctly formatted. I relabeled variables as needed. I dropped any unimportant variables. 
 
 Then, I created groups and new variables to prepare for data modeling. 
 
