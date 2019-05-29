@@ -19,7 +19,7 @@ Then, I created groups and new variables to prepare for data modeling.
 
 The continuous variables used for time in hospital, # of lab procedures, # of procedures, # of medications, # of outpatient visits, # of emergency visits, # of admissions, # of inpatient visits, and # of diagnoses. 
 
-The categorical variables used were age, race, gender, readmission, payer code, disbetes medication and medication change.
+The categorical variables used were age, race, gender, readmission, diabetes medication and medication change.
 
 Since this is healthcare utilization data, I wanted to learn the spread of the variables of interest that will be used in the model. 
 I have created histogram that showed the skewness of the variables of interest. 
