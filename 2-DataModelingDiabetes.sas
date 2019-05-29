@@ -14,26 +14,92 @@
 
 
 
+
+*Import Data Set*
+LIBNAME diabetic  'C:\Users\adh81\Desktop\';
+
 DATA diabetic.diabetes;
-	INFILE "C:\Users\User\Desktop\DataAnal\diabetic_data.csv";
-	INPUT encounter_id	patient_nbr	race $	gender $	age $	weight	admission_type_id	discharge_disposition_id	
-admission_source_id	time_in_hospital	payer_code	medical_specialty $	num_lab_procedures	num_procedures	num_medications	
-number_outpatient	number_emergency	number_inpatient	diag_1	diag_2	diag_3	number_diagnoses	max_glu_serum	
-A1Cresult	$ metformin	$ repaglinide $	nateglinide	$ chlorpropamide $ glimepiride	$ acetohexamide	$ glipizide	$ glyburide	$ tolbutamide $
-pioglitazone $	rosiglitazone $	acarbose $	miglitol $	troglitazone $	tolazamide $	examide $	citoglipton	$ insulin $	
-glyburide_metformin $	glipizide_metformin	$ glimepiride_pioglitazone $	metformin_rosiglitazone $	metformin_pioglitazone $	change $	
-diabetesMed	$ readmitted $
-;
+	LENGTH race $22.;
+	INFILE "C:\Users\adh81\Desktop\diabetic_datarev1.csv" delimiter=',' firstobs=2 
+                 lrecl = 101767;
+	INPUT encounter_id patient_nbr race $	gender $	age $ time_in_hospital num_lab_procedures	num_procedures	num_medications	
+number_outpatient	number_emergency	number_inpatient number_diagnoses	change $	diabetesMed	$ readmitted $;
 RUN;
 
-/*I have created histogram to better understand the spread of variables of interest.*/
-PROC SGPLOT DATA = sasdata.death;
- HISTOGRAM age;
- title 'Analysis of Survival - Age Histogram';
+/*I have created several histograms to better understand the spread of variables of interest.*/
+
+PROC SGPLOT DATA = diabetic.diabetes;
+ HISTOGRAM time_in_hospital;
+ title 'Diabetes Time in Hospital Histogram';
 RUN; 
 
-/*Also, I ran descriptive statistics(Mean/Medium/Mode/n) for my variables of interest.
-*/
+PROC SGPLOT DATA = diabetic.diabetes;
+ HISTOGRAM num_lab_procedures;
+ title 'Diabetes # of Lab Procedures Histogram';
+RUN; 
+
+PROC SGPLOT DATA = diabetic.diabetes;
+ HISTOGRAM num_procedures;
+ title 'Diabetes # of Procedures Histogram';
+RUN; 
+
+PROC SGPLOT DATA = diabetic.diabetes;
+ HISTOGRAM num_medications;
+ title 'Diabetes # of Medications Histogram';
+RUN; 
+
+PROC SGPLOT DATA = diabetic.diabetes;
+ HISTOGRAM  number_outpatient;
+ title 'Diabetes # of Outpatient Visits Histogram';
+RUN; 
+
+PROC SGPLOT DATA = diabetic.diabetes;
+ HISTOGRAM number_emergency;
+ title 'Diabetes # of Emergency Room Visits Histogram';
+RUN;
+
+PROC SGPLOT DATA = diabetic.diabetes;
+ HISTOGRAM number_inpatient;
+ title 'Diabetes # of Inpatient Room Visits Histogram';
+RUN;
+
+PROC SGPLOT DATA = diabetic.diabetes;
+ HISTOGRAM number_diagnoses;
+ title 'Diabetes # of Diagnoses Visits Histogram';
+RUN;
+
+
+proc gchart data=diabetic.diabetes;
+	vbar gender;
+	title 'Diabetes Gender Bar Chart';
+run;
+
+proc gchart data=diabetic.diabetes;
+	vbar race;
+	title 'Diabetes Race Bar Chart';
+run;
+
+proc gchart data=diabetic.diabetes;
+	vbar age;
+	title 'Diabetes Age Bar Chart';
+run;
+
+proc gchart data=diabetic.diabetes;
+	vbar change;
+	title 'Diabetes Medication Change Bar Chart';
+run;
+
+proc gchart data=diabetic.diabetes;
+	vbar diabetesMed;
+	title 'On Diabetes Medication Bar Chart';
+run;
+
+proc gchart data=diabetic.diabetes;
+	vbar readmitted ;
+	title 'Diabetes Hospital Readmmision Bar Chart';
+run;
+
+/*I ran descriptive statistics(Mean/Medium/Mode/n) for my variables of interest.*/
 
 title "Descriptive Statitsics for Variables";
 proc means data=diabetic.diabetes n nmiss mean median mode maxdec=3;
