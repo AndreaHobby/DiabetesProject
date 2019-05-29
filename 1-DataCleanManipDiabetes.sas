@@ -14,41 +14,31 @@
 
 
 *Import Data Set*
-*Before importing, I dropped the weight variable due to a significant amount of missing data* 
-LIBNAME diabetic  'C:\Users\User\Desktop\DataAnal\';
+LIBNAME diabetic  'C:\Users\adh81\Desktop\';
 
 DATA diabetic.diabetes;
-	INFILE "C:\Users\User\Desktop\DataAnal\diabetic_data.csv";
-	INPUT encounter_id	patient_nbr	race $	gender $	age $	weight	admission_type_id	discharge_disposition_id	
-admission_source_id	time_in_hospital	payer_code	medical_specialty $	num_lab_procedures	num_procedures	num_medications	
-number_outpatient	number_emergency	number_inpatient	diag_1	diag_2	diag_3	number_diagnoses	max_glu_serum	
-A1Cresult	$ metformin	$ repaglinide $	nateglinide	$ chlorpropamide $ glimepiride	$ acetohexamide	$ glipizide	$ glyburide	$ tolbutamide $
-pioglitazone $	rosiglitazone $	acarbose $	miglitol $	troglitazone $	tolazamide $	examide $	citoglipton	$ insulin $	
-glyburide_metformin $	glipizide_metformin	$ glimepiride_pioglitazone $	metformin_rosiglitazone $	metformin_pioglitazone $	change $	
-diabetesMed	$ readmitted $
-;
+	LENGTH race $22.;
+	INFILE "C:\Users\adh81\Desktop\diabetic_datarev1.csv" delimiter=',' firstobs=2 
+                 lrecl = 101767;
+	INPUT encounter_id patient_nbr race $	gender $	age $ time_in_hospital num_lab_procedures	num_procedures	num_medications	
+number_outpatient	number_emergency	number_inpatient number_diagnoses	change $	diabetesMed	$ readmitted $;
 RUN;
 
-proc contents data=diabetic.diabetes;
+proc contents data=diabetic.diabetes; /*Verify Number of Observations and variable type and length*/
 run;
 
 proc freq data=diabetic.diabetes;
-tables race gender age / nocum nopercent;
-title "Frequency Counts for Selected Character Variables";
+tables race gender age change diabetesMed	readmitted / nocum nopercent;
+title "Frequency Counts for Character Variables";
 run;
-
 
 *Checking to make sure character variables and numeric variables are valid*
 title "Listing of invalid character values";
 data _null_;
 set diabetic.diabetes;
 file print; 
-***check Gender;
-if Gender not in ('F' 'M' ' ') then put Patno= Gender=;
-***check Dx;
-if verify(trim(Dx),'0123456789') and not missing(Dx)
-then put Patno= Dx=;
-if AE not in ('0' '1' ' ') then put Patno= AE=;
+***check Gender for invalid or missing data;
+if Gender not in ('Female' 'Male' ' ') then put Gender=;
 run;
 
 title "Listing of invalid gender values";
@@ -61,24 +51,25 @@ run;
 *Checking for invalid numeric variables*
 title "Checking numeric variables in the diabetes data set";
 proc means data=diabetic.diabetes n nmiss min max maxdec=3;
-var encounter_id patient_nbr;
+var encounter_id patient_nbr time_in_hospital num_lab_procedures num_procedures	num_medications	
+number_outpatient	number_emergency	number_inpatient number_diagnoses;
 run;
-
-*Check for Missing Data*
 
 /*Then, I looked for out of range data.*/
 
 title "Using PROC UNIVARIATE to Look for Outliers";
 proc univariate data=diabetic.diabetes plot;
 id patient_nbr;
-var encounter_id patient_nbr;
+var time_in_hospital num_lab_procedures num_procedures	num_medications	
+number_outpatient	number_emergency	number_inpatient number_diagnoses;
 run;
 
 ods select extremeobs;
 title "Using proc univariate to look for outliers";
 proc univariate data=diabetic.diabetes;
-id Patno;
-var HR SBP DBP;
+id patient_nbr;
+var time_in_hospital num_lab_procedures num_procedures	num_medications	
+number_outpatient	number_emergency	number_inpatient number_diagnoses;
 run;
 
 title "Out-of-range values for numeric variables";
