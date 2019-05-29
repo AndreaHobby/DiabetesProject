@@ -11,17 +11,20 @@ Once the individual dataset was downloaded, I checked the variable types in **SA
  I checked for invalid character values and missing data. Then, I looked for out of range data. 
  I checked for invalid numeric values and missing data. I checked to see if any data types need to be converted. Last, I checked the range for variables. I looked for duplicates and values that are repeating. I checked that dates are correctly formatted. Relabel variables as needed. I dropped any unimportant variables. 
 
-Created groups and new variables
+The, I created groups and new variables to prepare for data modeling. 
 
 ### Step 3 Modeling 
 
+The continuous variables used for time in hospital, # of lab procedures, # of procedures, # of medications, # of outpatient visits, # of emergency visits, # of admissions, and # of diahnoses. 
+
+The categorical variables used were age, race, gender, readmission and medication change.
+
 Since this is healthcare utilization data, I wanted to learn the spread of the variables of interest that will be used in the model. 
-I have created histogram that .... 
+I have created histogram that showed the skewness of the variables of interest. 
 
-Also, I ran descriptive statistics for my variables of interest.
-Mean/Medium/Mode and n for variables of interest 
+Also, I ran descriptive statistics for my variables of interest. I checked the Mean, Medium, Mode and n for variables of interest. 
 
-Significance tests were used to identify the associations between each variable and the outcome. For categorical variables, the chi square test was used or Fisher exact test where appropriate. For continuous variables, the Mann-Whitney U test was employed. 
+Significance tests were used to identify the associations between each variable and the outcome. For categorical variables, the chi square test was used or Fisher exact test where appropriate. For continuous variables, the Mann-Whitney U test was used. 
 
 The Kaplan-Meier life table method was used to estimate the risk of readmission. The log-rank test was used to compare survival curves.
 
