@@ -55,7 +55,7 @@ var encounter_id patient_nbr time_in_hospital num_lab_procedures num_procedures	
 number_outpatient	number_emergency	number_inpatient number_diagnoses;
 run;
 
-/*Then, I looked for out of range data.*/
+/*Then, I looked for out of range data and overall range of the data.*/
 
 title "Using PROC UNIVARIATE to Look for Outliers";
 proc univariate data=diabetic.diabetes plot;
@@ -72,20 +72,7 @@ var time_in_hospital num_lab_procedures num_procedures	num_medications
 number_outpatient	number_emergency	number_inpatient number_diagnoses;
 run;
 
-title "Out-of-range values for numeric variables";
-proc print data=clean.patients;
-where (HR not between 40 and 100 and HR is not missing) or
-(SBP not between 80 and 200 and SBP is not missing) or
-(DBP not between 60 and 120 and DBP is not missing);
-id Patno;
-var HR SBP DBP;
-run;
-
-I checked to see if any data types need to be converted. 
-
-Last, I checked the range for variables. 
-
-/*I looked for duplicates and values that are repeating.*/
+/*I looked for duplicates and values that are repeating. The ecounter_id is unique for every visit.*/
 proc sort data=diabetic.diabetes out=tmp;
 by encounter_id;
 run;
@@ -103,27 +90,7 @@ run;
 
 *Relabel and format variables as needed. This mainly for the age variable and medications.* 
 
-proc format;
-invalue $gen 'F','M' = _same_
-other = ' ';
-invalue $ae '0','1' = _same_
-other = ' ';
-run;
 
-data clean.patients_filtered;
-infile "c:\books\clean\patients.txt" pad;
-input @1 Patno $3.
-@4 Gender $gen1.
-@27 AE $ae1.;
-label Patno = "Patient Number"
-Gender = "Gender"
-AE = "adverse event?";
-run;
-
-title "Listing of data set PATIENTS_FILTERED";
-proc print data=clean.patients_filtered;
-var Patno Gender AE;
-run;
 
 
 
