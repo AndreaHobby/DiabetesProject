@@ -29,8 +29,6 @@ Also, I ran descriptive statistics for my variables of interest. I checked the M
 
 Significance tests were used to identify the associations between each variable and the outcome. For categorical variables, the chi square test was used or Fisher exact test where appropriate. For continuous variables, the Mann-Whitney U test was used. 
 
-The Kaplan-Meier life table method was used to estimate the risk of readmission. The log-rank test was used to compare survival curves.
-
 ### Source:
 
 The data are submitted on behalf of the Center for Clinical and Translational Research, Virginia Commonwealth University, a recipient of
