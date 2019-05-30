@@ -3,6 +3,9 @@
 ### Objective
 This is a project to analyze hospital readmission rates. 
 
+### Hypothesis 
+Number of Hospital of diagnoses, # of procedures, # of inpatient visits, medication change, and number of emergency visits are associated with hospital readmission. 
+
 ### Step 1 Obtaining the data
 
 Once the individual dataset was downloaded, I used excel to remove variables that would not be used. 
@@ -12,8 +15,6 @@ Then, I checked the variable types in **SAS 9.4**.
 ### Step 2 Data Cleaning and Manipulation 
  I checked for invalid character values and missing data. Then, I looked for out of range data. 
  I checked for invalid numeric values and missing data. I checked to see if any data types need to be converted. Last, I checked the range for variables. I looked for duplicates and values that are repeating. I checked that dates are correctly formatted. I relabeled variables as needed. I dropped any unimportant variables. 
-
-Then, I created groups and new variables to prepare for data modeling. 
 
 ### Step 3 Modeling 
 
