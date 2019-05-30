@@ -1,7 +1,7 @@
 # Diabetes Hospital Readmission Project
 
 ### Objective
-This is a project to analyze hospital readmission rates. 
+This is a project to analyze hospital readmission in 130-US hospitals for years 1999-2008. 
 
 ### Hypothesis 
 Number of Hospital of diagnoses, # of procedures, # of inpatient visits, medication change, and number of emergency visits are associated with hospital readmission. 
