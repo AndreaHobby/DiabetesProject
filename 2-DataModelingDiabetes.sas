@@ -1,13 +1,13 @@
 /************************************************************************************************************************/
-/* Filename: 2-DataModelingDiabetes                                                                                             */
-/*                             Goal:                                                                                    */                    */
+/* Filename: 2-DataModelingDiabetes                                                                                     */
+/*                                                                                                                      */                 
 /* Contents:                                                                                                            */
-/* -Data Modeling                                                                                                                */
-/* 																									*/
+/* -Data Modeling                                                                                                       */
+/* 																								                    	*/
 /*                                                                                                                      */
 /*                                                                                                                      */
-/* Date Created: 2019-05-28-2019                                                                                             */
-/* Date Updated: 2019-05-28-2019                                                                                             */
+/* Date Created: 2019-05-28-2019                                                                                        */
+/* Date Updated: 2019-05-29-2019                                                                                        */
 /* Program Author: Andrea Hobby                                                                                         */
 /* Version 1.0                                                                                                          */
 /************************************************************************************************************************/
@@ -101,44 +101,60 @@ run;
 
 /*I ran descriptive statistics(Mean/Medium/Mode/n) for my variables of interest.*/
 
-title "Descriptive Statitsics for Variables";
-proc means data=diabetic.diabetes n nmiss mean median mode maxdec=3;
-var admission_type_id;
+title "Descriptive Stat for Variables";
+proc univariate data=diabetic.diabetes;
+var time_in_hospital num_lab_procedures num_procedures	num_medications	
+number_outpatient	number_emergency	number_inpatient number_diagnoses;
 run;
 
 /*Significance tests were used to identify the associations between each variable and the outcome. 
 For categorical variables, the chi square test was used or Fisher exact test where appropriate. */
 
+proc freq data=diabetic.diabetes;
+ tables readmitted*race / chisq measures
+ plots=(freqplot(twoway=groupvertical scale=percent));
+run;
 
-proc freq data=datasetname;
- tables catvarrow*catvarcol / chisq measures
+proc freq data=diabetic.diabetes;
+ tables diabetesMed*race / chisq measures
+ plots=(freqplot(twoway=groupvertical scale=percent));
+run;
+
+proc freq data=diabetic.diabetes;
+ tables change*race / chisq measures
+ plots=(freqplot(twoway=groupvertical scale=percent));
+run;
+
+proc freq data=diabetic.diabetes;
+ tables gender*race / chisq measures
+ plots=(freqplot(twoway=groupvertical scale=percent));
+run;
+
+proc freq data=diabetic.diabetes;
+ tables age*race / chisq measures
+ plots=(freqplot(twoway=groupvertical scale=percent));
+run;
+
+proc freq data=diabetic.diabetes;
+ tables age*change / chisq measures
+ plots=(freqplot(twoway=groupvertical scale=percent));
+run;
+
+proc freq data=diabetic.diabetes;
+ tables age*Diabetesmed / chisq measures
+ plots=(freqplot(twoway=groupvertical scale=percent));
+run;
+
+proc freq data=diabetic.diabetes;
+ tables age*readmitted / chisq measures
  plots=(freqplot(twoway=groupvertical scale=percent));
 run;
 
 
+/* Logistic Regression used for modeling */
 
-/*The Kaplan-Meier life table method was used to estimate the risk of readmission. The log-rank test 
-was used to compare survival curves. */
-title 'Survival of Patients with Diabetes';
-   data diabetic.diabetes;
-      keep Freq Years Censored;
-      retain Years -.5;
-      input fail withdraw @@;
-      Years + 1;
-      Censored=0;
-      Freq=fail;
-      output;
-      Censored=1;
-      Freq=withdraw;
-      output;
+
+proc logistic data=diabetic.diabetes descending;
+  class race / param=ref ;
+  model readmitted = number_emergency number_inpatient number_diagnoses;
 run;
-
-  ods graphics on;
-   proc lifetest data=Males  method=lt intervals=(0 to 15 by 1)
-                 plots=(s,ls,lls,h,p);
-      time Years*Censored(1);
-      freq Freq;
-   run;
-   ods graphics off;
-
-
