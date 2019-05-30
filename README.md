@@ -14,7 +14,7 @@ Then, I checked the variable types in **SAS 9.4**.
  
 ### Step 2 Data Cleaning and Manipulation 
  I checked for invalid character values and missing data. Then, I looked for out of range data. 
- I checked for invalid numeric values and missing data. I checked to see if any data types need to be converted. Last, I checked the range for variables. I looked for duplicates and values that are repeating. 
+ I checked for invalid numeric values and missing data. I checked to see if any data types need to be converted. Last, I checked the range for variables. I looked for duplicates and values that are repeating. The race variable had a signficant level of missing data butI kept it in the data set. 
 
 ### Step 3 Modeling 
 
@@ -29,9 +29,10 @@ Also, I ran descriptive statistics for my variables of interest. I checked the M
 
 Significance tests were used to identify the associations between each variable and the outcome. For categorical variables, the chi square test was used or Fisher exact test where appropriate. For continuous variables, the Mann-Whitney U test was used. 
 
-### Discussion
+Logistic regression was used for data modeling. 
 
 ### Conclusion
+
 
 ### Source:
 
