@@ -33,6 +33,7 @@ Logistic regression was used for data modeling.
 
 ### Conclusion
 
+A one unit increase in time in hospital, the odds of being readmitted to the hospital (versus no readmissioni) increase by a factor of 1.05.
 
 ### Source:
 
