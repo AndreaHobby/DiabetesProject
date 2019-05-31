@@ -16,7 +16,7 @@ Then, I checked the variable types in **SAS 9.4**.
  I checked for invalid character values and missing data. Then, I looked for out of range data. 
  I checked for invalid numeric values and missing data. I checked to see if any data types need to be converted. Last, I checked the range for variables. I looked for duplicates and values that are repeating. The race variable had a signficant level of missing data butI kept it in the data set. 
 
-### Step 3 Modeling 
+### Step 3 Data Modeling 
 
 The continuous variables used for time in hospital, # of lab procedures, # of procedures, # of medications, # of outpatient visits, # of emergency visits, # of admissions, # of inpatient visits, and # of diagnoses. 
 
