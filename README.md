@@ -1,3 +1,5 @@
+![trends](img/diabetes.PNG)
+
 # Diabetes Hospital Readmission Project
 
 ### Objective
