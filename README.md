@@ -1,7 +1,5 @@
 ![diabetes](img/Diabetes.PNG)
 
-# Diabetes Hospital Readmission Project
-
 ### Objective
 This is a project to analyze hospital readmission in 130-US hospitals for years 1999-2008. 
 
