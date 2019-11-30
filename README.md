@@ -1,4 +1,4 @@
-![trends](img/diabetes.PNG)
+![diabetes](img/Diabetes.PNG)
 
 # Diabetes Hospital Readmission Project
 
