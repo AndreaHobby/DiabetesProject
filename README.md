@@ -41,3 +41,12 @@ The data are submitted on behalf of the Center for Clinical and Translational Re
 NIH CTSA grant UL1 TR00058 and a recipient of the CERNER data. John Clore (jclore '@' vcu.edu), Krzysztof J. Cios (kcios '@' vcu.edu), 
 Jon DeShazo (jpdeshazo '@' vcu.edu), and Beata Strack (strackb '@' vcu.edu). 
 This data is a de-identified abstract of the Health Facts database (Cerner Corporation, Kansas City, MO).
+
+## Repo Structure
+```
+├── /data (diabetes data)
+├── /img (contains all images for repo)
+├── 1-DataCleanManipDiabetes.sas
+├── 2-DataModelingDiabetes.sas
+├── README.md
+└── dataset_diabetes.zip
