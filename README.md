@@ -50,3 +50,12 @@ This data is a de-identified abstract of the Health Facts database (Cerner Corpo
 ├── 2-DataModelingDiabetes.sas
 ├── README.md
 └── dataset_diabetes.zip
+
+
+df_flat <- df %>%
+  mutate(json_parsed = map(json_data, ~fromJSON(.x, flatten = TRUE))) %>%  # Parse JSON safely
+  select(id, json_parsed) %>%  # Keep the ID column
+  unnest_wider(json_parsed)  # Expand JSON fields into separate columns
+
+# Print result
+print(df_flat)
